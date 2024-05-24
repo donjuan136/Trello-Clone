@@ -35,3 +35,84 @@ Section 1
         kita perlu sebuah database untuk menyimpan data, kita akan simpan dilocal machine database 
         install https://www.mongodb.com/docs/ mongodb  
         install docker https://docs.docker.com/ 
+
+#Section 2 Authentication
+    - In this section you will learn how to setup Web Sockets and Mongoose
+    - You will also learn how to create registration and login pages on both client and server side
+    #setup backend server with express MongoDB and SocketIO
+    #Setting up WebSocket in NodeJS
+    #Install express
+        jump inside in folder server and type in terminal npm i express 
+        in this case we're installing this framework as a Dependency here
+    #install mongodb
+        npm install mongoose
+        mongoose the most popular package to work with mongodb inside known shares, why it is most popular, because you can simply setup your connection to the mongoDB with it.
+        you can create your models and work with mongoDB in more correct way by working with models
+    #install Socket Layer
+        npm i socket.io
+        this is exactly our library to work with web socket inside nodejs
+    #configuring server
+        jump inside in folder server/src/server.ts
+        npm i @types/express -D  # mean -D just install it as a dev Dependency but don't need this library on the production
+
+    #FYI
+        it really easy to just write your code for start and express to create a web server for socket.io but actually it is not that easy to configure together MongoDB,Express and Socket.IO because
+         we want normal rules just like in normal application,but we also want to bind to socket.io so here we can work with web sockets.it is not easy,but this is the production way because actually nobody
+         needs just a single package, we really want the full blown production ready application
+        misal kita menggunakan javascript sedangkan extension kita .ts akan terjadi error
+         contoh: import express from "express" error dengan could not find a declaration file for module 'express'
+         jadi hanya javascript yang bisa membaca kode tersebut express, kita perlu konfigurasi tambahan untuk typescript dengan install npm i @types/express -D setelah selesai
+         pergi ke server/tsconfig.json untuk melihat cara kerja typescriptconfiguration
+         {
+            "compilerOptions": {
+            "module": "commonjs",
+            "target": "ES6", #bisa membaca kode dari javascript es6 dari node
+            "moduleResolution": "node",
+            "sourceMap": true,
+            "outDir":"dist",
+            "esModuleInterop": true,
+            "strict": true }
+            }
+        kita bedah kode ini
+    #created scripts in server/src/server.ts for create server and connect database mongo
+        import express from "express";
+        import {createServer} from "http";
+        import { Server } from "socket.io";
+        import mongoose from "mongoose";
+        //create http server
+        const app = express()
+        const httpServer = createServer(app);
+        const io = new Server(httpServer)
+
+        app.get("/", (req,res) =>{
+            res.send("Api is Build")
+        })  
+
+        //check our socket connetion is working
+        //after app we can write
+        //first parameter "connection" second paramater inside socketio this is default action we have our callback ""
+        io.on('connection',()=>{
+            console.log("connected socket io");
+            //socket is working for us because we just set it up on the backend but not on client
+            //but this is way how we will we write our socket code on the backend
+        })
+
+        //created mongoose
+        //the main idea is that inside your web server, you will do some request to the database and if database is not ready yet, the we can't do this request. which actually means every single time we want to
+        //be sure that mongodb is there, connection is established and only after this we're starting our web server.
+        //this is way here what i want to write after our socket io we can create mongoose.
+        //method connect mongodb
+        mongoose.connect('mongodb://localhost:27017/trello-clone').then(()=>{
+            console.log("success connected databases");
+            
+            //now inside we can first of all write that we successfully connected to our databases
+        })   //this is promise need .then()
+        //check mongoose running on port local host type 'mongo' in terminal and again type db.getMongo()
+        //inside container connect(mongodb://localhost:27017/) you can write here any name and it will be created example /trello-clone
+
+        httpServer.listen(4000, ()=>{ //we have a callback that our web server is successfully started
+            console.log("hello website ini berjalan di 4000" );
+        })
+
+
+        

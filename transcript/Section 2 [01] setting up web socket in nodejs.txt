@@ -1,0 +1,315 @@
+In this video we're starting with developing our project.
+
+And actually the goal of this video is to set up our backend server with express MongoDB and socket
+
+IO.
+
+So let's start and now here we must install several new packages.
+
+First of all, we want express.
+
+This is our framework.
+
+This is why I want to jump inside console and as you can see we are inside root folder.
+
+This is wrong.
+
+We don't want to install here packages because we first must jump inside our server folder here.
+
+We want to install packages.
+
+This is where here I am right in and payment style express.
+
+In this case we're installing this framework as a dependency here.
+
+You can see now we have a new dependency express.
+
+This is our framework.
+
+The next thing that we want to install is mongoose.
+
+And if you don't know what is Mongoose, this is the most popular package to work with.
+
+MongoDB inside known shares.
+
+Why it is most popular?
+
+Because you can simply set up your connection to the MongoDB with it.
+
+You can create your models and work with MongoDB in more correct way by working with models.
+
+So you typically have something like a RAM and we will learn Mongoose type in the next lectures.
+
+And the last thing that we want to install here is socket layer.
+
+This is why NPM install socket and this is exactly our library to work with web sockets inside Node.js.
+
+So as you can see, all our dependencies are installed and now we can jump inside source server test
+
+and we don't have anything here and we can start with configuring our server.
+
+But actually here is the question.
+
+It is really easy to just write your code for Start and express her and it is really easy to create
+
+a web server for socket IO.
+
+But actually it is not that easy to configure together MongoDB express and socket IO because what we
+
+want from express, we want normal rules just like in normal application, but we also want to bind
+
+to it socket here so we can work with web sockets.
+
+And additionally to all this we need somehow to start our MongoDB.
+
+So as I said, it is not easy, but this is the production way because actually nobody needs just a
+
+single package.
+
+We really want the full blown production ready application.
+
+So first of all here I will import our express from Express.
+
+And actually at this moment you probably think, okay, what he is doing, he is right an input inside
+
+Node.js.
+
+And actually this is totally fine because we're not right in here JavaScript, we're right in here TypeScript
+
+and it is transpired with our config.
+
+And just to remind you here we have our test config.
+
+It is transpired to script six which can be readable by Node.js, but most importantly, mode resolution
+
+is common chest and node.
+
+This is why it will be converted to require and it will work like a charm inside Node.js.
+
+But for us it is extremely comfortable because using inputs is much better than writing require.
+
+And here we have a next problem.
+
+As you can see here, I have an error.
+
+I cannot find the declaration file for Module Express.
+
+What does it have a mean?
+
+TypeScript tries to help us with inputs and he can't do it out of the box because TypeScript doesn't
+
+know anything about Express Package.
+
+And here is a solution we must install with NPM install save dev types express so we can additionally
+
+install type in's for express package and then TypeScript can help us more.
+
+And this is exactly what we want to do.
+
+We need to jump and set console and write and payment style and here is add types slash express and
+
+here it is important minus the option to just install it as a dev dependency but don't need this library
+
+on the production.
+
+And as you can see after installation, this error is gone and now TypeScript can help us with Express.
+
+So here we successfully imported our express package and now we can create our application.
+
+So I can simply right here const app equals and here we call an express.
+
+And as you can see now if I highlight an express, you can see all types of express from this specific
+
+package.
+
+For example, we can read here that it creates an express application and this is extremely helpful
+
+for development purposes.
+
+The second thing that we want to do, we must create an TTP server and you will see why in a second.
+
+So here I wanted to structure create server from and here will be HTTP.
+
+And as you can see, we're getting a step out of the box and also create server because this is the
+
+default node package, but it might happen that you are missing typing for non chess.
+
+This is where we can jump directly in the console and write npm pm install types node minus D and in
+
+this case we're installing.
+
+For sure all typists which are needed for known chess.
+
+So here we imported create server from HTP.
+
+Now we must use it.
+
+So after app we can create our HTP server.
+
+And here we want to call our create server and provide inside our app.
+
+And just to remind you, app, this is an instance of our express, this is our express server and we're
+
+creating here our HTP server.
+
+Additionally, the next thing that we want to input here is socket IO.
+
+This is why here very important server with big as from socket to your package.
+
+And now after this we can directly create our socket server.
+
+So here const IO and here we're calling new server.
+
+And inside we're providing our HTP server.
+
+This is exactly why we created this HTP server first and before our express.
+
+So now in this file we have three different things.
+
+First of all, we have our app so we can work directly with Express.
+
+Secondly, we have our HTP server, which we can start with some point, and the third is our IO.
+
+So we can make some web socket request and just to check that everything is working.
+
+I want to use here our app and just try to AB get slash.
+
+So we want to create our new route on Slash and here we don't need anything.
+
+But I just want to respond with some string.
+
+This is why here we can write request and response and here inside rest send API is app.
+
+If you are not familiar with EXPRESS, this is how we create just plain travels inside our backend server.
+
+So here we are saying, okay, we're creating our get around for slash, which means for home page and
+
+here is our callback.
+
+And inside our callback we are getting request and response and here we can use address send to send
+
+this train to this specific round.
+
+The last thing that we must do here is start our server so here we can write a should it be server?
+
+Don't listen.
+
+And here we are providing support, for example, 4001.
+
+After this, we have a callback that our web server is successfully started so we can write inside some
+
+console.log, for example, that our API is listening on port and here we'll be our port.
+
+And actually it would be nice later to put this port in additional config file, but for now it will
+
+also go.
+
+So let's check if it's working.
+
+I have here a tab with open API server and as you can see here now daemon restarted this web server
+
+again and again and at some point now we're getting our console.log.
+
+API is listening on port 4001, which actually means if in browser we will open localhost 4001.
+
+You can see here our message API is up, but it is not all.
+
+We also want to check if our socket your connection is working.
+
+This is why here after app we can write io dot and here we have on.
+
+And as you can see, first of all, we're getting all taipans out of the box with socket IO.
+
+We don't need to install any additional package.
+
+Secondly, you can see that on add the listener function to our socket IO, which actually means we
+
+can write here on and we are providing here as a first parameter connection.
+
+And actually this is the default action that can happen inside socket IO and here we have our callback.
+
+We don't want anything for now here, but we can simply write console.log, connected and we can really
+
+see that socket is working for us because we just set it it up on the backend but not on the client.
+
+But this is a way how we will write our socket code on the backend and we are fully prepared for it.
+
+So here with that we are working with Express with your we're working with Socket IO and the ATP server
+
+we're using to start the server.
+
+And the last thing that we must do here is set up our mongoose.
+
+And just to remind you, Mongoose is the package to work with MongoDB.
+
+So here on the top I want to import mongoose from mongoose.
+
+And now here is a really important point.
+
+You never want to start your web servers before you start it.
+
+Connection to the database.
+
+The main idea is that inside your web server, you will do some requests to the database, and if database
+
+is not ready yet, then we can't do this request, which actually means every single time we want to
+
+be sure that MongoDB is there, connection is established and only after this we're starting our web
+
+server.
+
+This is why here what I want to write after our socket io we can right here mongoose dot and we have
+
+here a method connect and actually inside we want to provide our MongoDB URL.
+
+So what I want to paste here is this your well it is MongoDB colon to slash this localhost 27 zero 17
+
+port slash LTL and actually this part on the left is the default path of.
+
+MongoDB.
+
+And it doesn't really matter how you installed MongoDB with the official way or with Docker container,
+
+it will work exactly the same.
+
+Either you have a run in MongoDB process on your machine on this port, or you have a run in MongoDB
+
+inside the container with this port which is available outside on our local machine.
+
+And here after slash, this is just the name of our database.
+
+You can write here any name and it will be created.
+
+I just wrote here l Trello like the name of our project.
+
+So this line is actually a promise.
+
+This is where here we can write.
+
+Don't then and don't after we connected successfully to our MongoDB database then will be triggered.
+
+And now inside we can first of all write that we successfully connected to our database.
+
+So I can write here connected to MongoDB.
+
+And also I want to move this issue to be listen inside in this case, first of all, our connection
+
+to MongoDB is established and after this we're start in our server.
+
+Now I want to jump inside our web server and check if it's working.
+
+As you can see now, I am getting message connected to MongoDB and after this message that our API was
+
+successfully started, which actually means this is exactly our goal, first of all, MongoDB, secondly,
+
+our web server and actually at this moment you might get some error regarding connection here and the
+
+most popular problem that you might have, you didn't start your MongoDB process on your machine.
+
+If it is not started, then we can't connect to MongoDB database.
+
+Then here you will probably get some error like cannot connect to MongoDB or connection failed.
+
+But if you see on your screen connected to MongoDB and the API is started, this means that you configured
+
+everything successfully and we started our web server on the backend with MongoDB and Socrata.

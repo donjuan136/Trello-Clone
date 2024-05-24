@@ -31,9 +31,44 @@ section 1
         typescript extension
         codeium
 
+#Section 2 Authentication
+    Setup WebSocket and Mongoose
+    Create registration and login pages on both client and server side
+    #Install express
+        npm i express
+    #install mongodb
+        npm i mongoose
+    #install Socket Layer
+        npm i socket.io
+    #configuring server
+        jump inside in folder server/src/server.ts
+        npm i @types/express -D
+        npm i @types/node -D
+    #created & configure web server and mongodb
+        jump inside in folder server/src/server.ts and typing this scripts
+            import express from "express";
+            import {createServer} from "http";
+            import { Server } from "socket.io";
+            import mongoose from "mongoose";
+            const app = express()
+            const httpServer = createServer(app);
+            const io = new Server(httpServer)
 
+            app.get("/", (req,res) =>{
+                res.send("Api is Build")
+            })  
 
+            io.on('connection',()=>{
+                console.log("connected socket io");
+            })
 
+            mongoose.connect('mongodb://localhost:27017/trello-clone').then(()=>{
+                console.log("success connected databases");
+            }) 
+
+            httpServer.listen(4000, ()=>{
+                console.log("hello website ini berjalan di 4000" ); 
+            })
 
 
 
