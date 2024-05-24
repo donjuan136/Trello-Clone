@@ -1,0 +1,37 @@
+MEAN Fullstack Trello clone: WebSocket, Socket IO
+
+Section 1
+    Preparing tools
+        #Intalling NodeJS & Angular https://nodejs.org/en https://angular.dev/
+            npm init
+            npm install -g @angular/cli (install CLI angular in global)
+            check after installed using command for nodejs(node -v) and angular(ng version) npm(npm -v)
+            MN Glacier Light sebuah tools yang membantu untuk membuat project dan mengenerate modul" yang berbeda maupun component
+            <router-outlet /> merupaka bagian terpenting
+
+        #Configuring NodeJS Server
+            sebelum memulai project kita perlu prepare untuk bagian backend, untuk mulai implementasi kita inisialiasi packages node dengan perintah npm init
+            npm install nodemon -D ..... nodemon sebuah package yang membantu untuk reload setiap kita melakukan perubahan dan apa yang dimaksud paramater -D? di Install didalam dev Dependencies
+            kita gunakan daemon untuk keperluan development tapi tidak digunakan ketika production.
+            npm install ts-node -D apa maksudnya? package node akan mengubah proses kode typescript menjadi javascript karena ini sangat efisien ketika kita ingin menulis menggunakan typescript code
+            kemudian kita tambahkan kode didalam D:\blog\MEAN\Trello-Clone\server\package.json didalam  kode "scrits" tambahkan
+            {
+                "start": "nodemon src/server.ts"
+            }
+            buat sebuah file config typescript letakan dibase project didalam folder server kemudian ketik nama file tsconfig.json dan isi scripts berikut ini kedalamnya
+            {
+                    "compilerOptions": {
+                    "module": "commonjs",
+                    "target": "ES6",
+                    "moduleResolution": "node",
+                    "sourceMap": true,
+                    "outDir":"dist",
+                    "esModuleInterop": true,
+                    "strict": true }
+            }
+            kemudian buat folder src/server.ts
+            setelah itu jalankan dengan npm start
+        #installing MongoDB & Docker
+        kita perlu sebuah database untuk menyimpan data, kita akan simpan dilocal machine database 
+        install https://www.mongodb.com/docs/ mongodb  
+        install docker https://docs.docker.com/ 

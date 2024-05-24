@@ -1,0 +1,42 @@
+Todo
+
+section 1
+    #install node & angular
+        npm init
+        mkdir frontend && backend  ataupun mkdir client && server
+        install ini didalam folder client npm install -g @angular/cli  ataupun ng new eltrello --directory ./
+        jalankan dengan perintah ng serve
+        hapus file  D:\blog\MEAN\Trello-Clone\client\src\app\app.component.scss
+        hapus file D:\blog\MEAN\Trello-Clone\client\src\app\app.component.spec.ts
+        kemudian masuk kedalam  D:\blog\MEAN\Trello-Clone\client\src\app\app.component.html
+        hapus semua isi content didalamnya kecuali isi 1baris ini <router-outlet />
+    #Configuring NodeJS Server
+        Prepare backend dengan cara inisialiasi file
+        npm init
+        npm install nodemon -D
+        npm install ts-node -D
+        create new file in base folder tsconfig.json and filled scripts in doc.txt
+        create folder and file in base project src/server.ts
+        tambahkan console.log("test") kemudian save lalu jalankan dengan perintah npm start
+    #installing MongoDB & Docker
+    docker run -d -p 27017-27019:27017-27019 --name mongodb mongo:4.0.4 tanya chat gpt/gemini untuk perintah ini secara penjelasan
+    command docker
+        docker exec -it mongodb mongo
+    command mongodb using docker
+        show databases;
+    command mongodb in terminal
+        mongod / mongo
+
+    #download auto input typescript
+        typescript extension
+        codeium
+
+
+
+
+
+
+
+
+
+
